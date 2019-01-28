@@ -22,6 +22,7 @@ import (
 	"os"
 	"reflect"
 	"strings"
+	"time"
 
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/golang/glog"
@@ -257,6 +258,8 @@ func (k *kubeProvider) Configure(_ context.Context, req *pulumirpc.ConfigureRequ
 		return nil, err
 	}
 	k.clientSet = cs
+
+	time.Sleep(10 * time.Second)
 
 	return &pulumirpc.ConfigureResponse{}, nil
 }
